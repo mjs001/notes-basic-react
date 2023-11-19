@@ -7,8 +7,9 @@ html {
   font-family: "Montserrat", sans-serif;
 }
 body {
-  background: #ffffff;
+  background: white;
   padding: 0 16px;
+  background-image: url("./assets/images/asfalt--dark--1920x1080.png");
 }
 
 .header {
@@ -36,13 +37,13 @@ body {
   color: #83a2ff;
 }
 .note {
-  background: #ffe3bb;
   border-radius: 7px;
   box-shadow: 0 2px 5px #ccc;
   padding: 10px;
   width: 240px;
   margin: 16px;
   float: left;
+  background-image: url("./assets/images/exclusive-paper-1920x1080.png");
 }
 .note h1 {
   font-size: 1.1em;
@@ -61,25 +62,34 @@ body {
   margin-right: 10px;
   color: #83a2ff;
   border: none;
-  width: 60px;
+  width: 11px;
   height: 36px;
   cursor: pointer;
   outline: none;
-  background-color: #ffe3bb;
   font-weight: bold;
+  background-color: rgba(255, 255, 255, 0);
 }
 
 form {
   position: relative;
   width: 480px;
   margin: 30px auto 20px auto;
-  background: #ffe3bb;
+  padding: 15px;
+  border-radius: 7px;
+  box-shadow: 0 1px 5px rgb(138, 137, 137);
+  background-image: url("./assets/images/exclusive-paper-1920x1080.png");
+}
+
+form.create-note {
+  position: relative;
+  width: 480px;
+  margin: 30px auto 20px auto;
   padding: 15px;
   border-radius: 7px;
   box-shadow: 0 1px 5px rgb(138, 137, 137);
 }
-form input,
-form textarea {
+form.create-note input,
+form.create-note textarea {
   width: 100%;
   border: none;
   padding: 4px;
@@ -87,9 +97,9 @@ form textarea {
   font-size: 1.2em;
   font-family: inherit;
   resize: none;
-  background: #ffe3bb;
+  background-image: url("./assets/images/exclusive-paper-1920x1080.png");
 }
-form button {
+form.create-note button {
   position: absolute;
   right: 18px;
   bottom: -18px;
