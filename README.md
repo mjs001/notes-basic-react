@@ -1,2 +1,2 @@
 # notes-basic-react
-Basic notes app in React
+Basic notes app made with React, CSS, and JS.
