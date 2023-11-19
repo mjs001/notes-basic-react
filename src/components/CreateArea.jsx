@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import Fab from "@mui/material/Fab";
 import Zoom from "@mui/material/Zoom";
+import axios from "axios";
 
 function CreateArea(props) {
   const [note, setNote] = useState({ title: "", content: "" });
@@ -15,9 +16,24 @@ function CreateArea(props) {
     setFormExpanded(true);
   }
 
+  function handleSubmit(e) {
+    e.preventDefault();
+    const host = window.location.host;
+    const protocol = window.location.protocol;
+    axios
+      .post("http://localhost:8000/add", {
+        title: note.title,
+        content: note.content,
+      })
+      .then((res) => console.log("created"))
+      .catch((err) => console.error("ERROR", err));
+
+    setNote({ title: "", content: "" });
+  }
+
   return (
     <div>
-      <form className="create-note" onSubmit={(e) => e.preventDefault()}>
+      <form className="create-note" onSubmit={handleSubmit}>
         {formExpanded ? (
           <input
             onClick={handleExpanded}
@@ -38,10 +54,10 @@ function CreateArea(props) {
 
         <Zoom in={formExpanded ? true : false}>
           <Fab
+            type="submit"
             className="add"
             onClick={() => {
               props.add(note);
-              setNote({ title: "", content: "" });
             }}
           >
             <AddIcon />
