@@ -48,7 +48,6 @@ app.post("/add", async (req, res) => {
 
 app.delete("/delete/:id", async (req, res) => {
   const id = req.params.id;
-  console.log("ID in server", id);
   try {
     const result = await db.query("DELETE FROM notesreact WHERE id=($1)", [id]);
     res.sendStatus(200);

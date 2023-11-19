@@ -29,7 +29,6 @@ function App() {
   }, []);
 
   function deleteNote(id) {
-    console.log("ID inside delete", id);
     axios
       .delete(`http://localhost:8000/delete/${id}`)
       .then((res) => console.log(res))
@@ -41,7 +40,6 @@ function App() {
     <div>
       <Header />
       <CreateArea add={addNote} />
-      {console.log(notes)}
       {notes.map((note) => {
         return (
           <Note
