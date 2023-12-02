@@ -113,3 +113,26 @@ form.create-note button {
   cursor: pointer;
   outline: none;
 }
+
+.btnContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.editBtn {
+  color: #83a2ff !important;
+  margin-right: 10px !important;
+}
+
+.deleteBtn {
+  color: #354167 !important;
+}
+
+.acceptChangesBtn {
+  color: green !important;
+  margin-right: 13px !important;
+}
+
+.cancelBtn {
+  color: red !important;
+}

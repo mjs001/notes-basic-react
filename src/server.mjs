@@ -25,7 +25,7 @@ app.get("/health", (req, res) => {
 
 app.get("/", async (req, res) => {
   try {
-    const result = await db.query("SELECT * FROM notesreact");
+    const result = await db.query("SELECT * FROM notesreact ORDER by id ASC");
     todos = result.rows;
     res.send(todos);
   } catch (err) {
@@ -37,17 +37,33 @@ app.post("/add", async (req, res) => {
   const { title, content } = req.body;
   try {
     const result = await db.query(
-      "INSERT INTO notesreact (title, content) VALUES ($1, $2)",
+      "INSERT INTO notesreact (title, content) VALUES ($1, $2) RETURNING id, title, content",
       [title, content]
     );
-    res.sendStatus(201);
+    var data = result.rows[0];
+    res.send(data);
+  } catch (err) {
+    console.error(err);
+  }
+});
+
+app.put("/edit/:id", async (req, res) => {
+  const { title, content } = req.body;
+  const id = parseInt(req.params.id);
+  try {
+    const result = await db.query(
+      "UPDATE notesreact SET title = $1, content = $2 WHERE id = $3 RETURNING id, title, content",
+      [title, content, id]
+    );
+    var data = result.rows[0];
+    res.send(data);
   } catch (err) {
     console.error(err);
   }
 });
 
 app.delete("/delete/:id", async (req, res) => {
-  const id = req.params.id;
+  const id = parseInt(req.params.id);
   try {
     const result = await db.query("DELETE FROM notesreact WHERE id=($1)", [id]);
     res.sendStatus(200);

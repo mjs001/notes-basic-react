@@ -16,24 +16,9 @@ function CreateArea(props) {
     setFormExpanded(true);
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    const host = window.location.host;
-    const protocol = window.location.protocol;
-    axios
-      .post("http://localhost:8000/add", {
-        title: note.title,
-        content: note.content,
-      })
-      .then((res) => console.log("created"))
-      .catch((err) => console.error("ERROR", err));
-
-    setNote({ title: "", content: "" });
-  }
-
   return (
     <div>
-      <form className="create-note" onSubmit={handleSubmit}>
+      <form className="create-note" onSubmit={(e) => e.preventDefault()}>
         {formExpanded ? (
           <input
             onClick={handleExpanded}
@@ -58,6 +43,7 @@ function CreateArea(props) {
             className="add"
             onClick={() => {
               props.add(note);
+              setNote({ title: "", content: "" });
             }}
           >
             <AddIcon />

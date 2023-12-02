@@ -9,48 +9,76 @@ import axios from "axios";
 function App() {
   const [notes, setNotes] = useState([]);
 
-  function addNote(note) {
-    setNotes((prev) => {
-      return [...prev, note];
-    });
+  async function addNote(note) {
+    const host = window.location.host;
+    const protocol = window.location.protocol;
+    await axios
+      .post("http://localhost:8000/add", {
+        title: note.title,
+        content: note.content,
+      })
+      .then((res) => setNotes((prev) => [...prev, res.data]))
+      .catch((err) => console.error("ERROR", err));
   }
 
-  function getTodos() {
-    axios
+  async function getTodos() {
+    await axios
       .get("http://localhost:8000/")
       .then((res) => setNotes(res.data))
       .catch((err) => console.error("ERROR", err));
   }
 
   useEffect(() => {
-    if (notes.length < 1) {
-      getTodos();
-    }
+    getTodos();
   }, []);
 
-  function deleteNote(id) {
-    axios
+  async function editNote(note) {
+    const host = window.location.host;
+    const protocol = window.location.protocol;
+    var copyNotes = [...notes];
+    var index = notes.findIndex((n) => n.id === note.id);
+    copyNotes.splice(index, 1, {
+      id: note.id,
+      title: note.title,
+      content: note.content,
+    });
+    await axios
+      .put(`http://localhost:8000/edit/${note.id}`, {
+        id: note.id,
+        title: note.title,
+        content: note.content,
+      })
+      .then((res) => {
+        setNotes(copyNotes);
+      })
+      .catch((err) => console.error("ERROR", err));
+  }
+
+  async function deleteNote(id) {
+    await axios
       .delete(`http://localhost:8000/delete/${id}`)
       .then((res) => console.log(res))
       .catch((err) => console.error("ERROR", err));
-    setNotes((prev) => prev.filter((insideId) => insideId.id !== id));
+    return setNotes((prev) => prev.filter((insideId) => insideId.id !== id));
   }
 
   return (
     <div>
       <Header />
       <CreateArea add={addNote} />
-      {notes.map((note) => {
-        return (
-          <Note
-            key={note.id}
-            id={note.id}
-            title={note.title}
-            content={note.content}
-            delete={deleteNote}
-          />
-        );
-      })}
+      {notes &&
+        notes.map((note) => {
+          return (
+            <Note
+              key={note.id}
+              id={note.id}
+              title={note.title}
+              content={note.content}
+              delete={deleteNote}
+              edit={editNote}
+            />
+          );
+        })}
 
       <Footer />
     </div>
