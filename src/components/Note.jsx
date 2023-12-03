@@ -21,18 +21,29 @@ function Note(props) {
       <p style={{ display: "none" }}>{note.id}</p>
       {editing ? (
         <>
-          <input
-            onChange={handleOnChange}
-            name="title"
-            placeholder="Title"
-            value={note.title}
-          />
-          <input
-            onChange={handleOnChange}
-            name="content"
-            placeholder="Content"
-            value={note.content}
-          />
+          <div className="inputsContainer">
+            <input
+              className="editInputs titleInput"
+              onChange={handleOnChange}
+              name="title"
+              placeholder="Title"
+              value={note.title}
+              type="text"
+            />
+            <span class="highlight"></span>
+            <span class="bar"></span>
+          </div>
+          <div className="inputsContainer">
+            <textarea
+              className="editInputs contentInput"
+              onChange={handleOnChange}
+              name="content"
+              placeholder="Content"
+              value={note.content}
+            />
+            <span class="highlight"></span>
+            <span class="bar"></span>
+          </div>
           <div className="btnContainer">
             <button
               className="acceptChangesBtn"

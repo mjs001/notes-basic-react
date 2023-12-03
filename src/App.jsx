@@ -5,6 +5,7 @@ import Note from "./components/Note";
 // import notes from "./notes";
 import CreateArea from "./components/CreateArea";
 import axios from "axios";
+import "./sass/styles.scss";
 
 function App() {
   const [notes, setNotes] = useState([]);

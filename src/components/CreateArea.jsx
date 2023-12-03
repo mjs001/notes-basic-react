@@ -26,6 +26,7 @@ function CreateArea(props) {
             name="title"
             placeholder="Title"
             value={note.title}
+            type="text"
           />
         ) : null}
         <textarea

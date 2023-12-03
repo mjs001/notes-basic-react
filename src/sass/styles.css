@@ -1,0 +1,179 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  background: white;
+  padding: 0 16px;
+  background-image: url("../../public/assets/images/asfalt--dark--1920x1080.png");
+}
+
+.header {
+  background-color: #83a2ff;
+  margin: auto -16px;
+  padding: 16px 32px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+.header h1 {
+  color: #fff;
+  font-family: "McLaren", cursive;
+  font-weight: 200;
+}
+
+.footer {
+  position: absolute;
+  text-align: center;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;
+}
+
+.footer p {
+  color: #83a2ff;
+}
+
+.note {
+  border-radius: 7px;
+  box-shadow: 0 2px 5px #ccc;
+  padding: 10px;
+  width: 240px;
+  margin: 16px;
+  float: left;
+  background-image: url("../../public/assets/images/exclusive-paper-1920x1080.png");
+}
+
+.note h1 {
+  font-size: 1.1em;
+  margin-bottom: 6px;
+}
+
+.note p {
+  font-size: 1.1em;
+  margin-bottom: 10px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.note button {
+  position: relative;
+  float: right;
+  margin-right: 10px;
+  color: #83a2ff;
+  border: none;
+  width: 11px;
+  height: 36px;
+  cursor: pointer;
+  outline: none;
+  font-weight: bold;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+form {
+  position: relative;
+  width: 480px;
+  margin: 30px auto 20px auto;
+  padding: 15px;
+  border-radius: 7px;
+  box-shadow: 0 1px 5px rgb(138, 137, 137);
+  background-image: url("../../public/assets/images/exclusive-paper-1920x1080.png");
+}
+
+form.create-note {
+  position: relative;
+  width: 480px;
+  margin: 30px auto 20px auto;
+  padding: 15px;
+  border-radius: 7px;
+  box-shadow: 0 1px 5px rgb(138, 137, 137);
+}
+
+form.create-note input,
+form.create-note textarea {
+  width: 100%;
+  border: none;
+  padding: 4px;
+  outline: none;
+  font-size: 1.2em;
+  font-family: inherit;
+  resize: none;
+  background-image: url("../../public/assets/images/exclusive-paper-1920x1080.png");
+}
+
+form.create-note button {
+  position: absolute;
+  right: 18px;
+  bottom: -18px;
+  background: #83a2ff;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  outline: none;
+}
+
+.btnContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.editBtn {
+  color: #83a2ff !important;
+  margin-right: 10px !important;
+}
+
+.deleteBtn {
+  color: #354167 !important;
+}
+
+.acceptChangesBtn {
+  color: green !important;
+  margin-right: 13px !important;
+}
+
+.cancelBtn {
+  color: red !important;
+}
+
+.editInputs:focus,
+.editInputs:active {
+  background: transparent;
+}
+
+.titleInput {
+  font-size: 1.1em;
+  margin-bottom: 6px;
+  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
+}
+
+.contentInput {
+  font-size: 1.1em;
+  font-family: "Montserrat", sans-serif;
+}
+
+.inputsContainer {
+  position: relative;
+}
+
+.editInputs {
+  display: block;
+  width: 210px;
+  border: none;
+  background: transparent;
+}
+
+.editInputs:focus {
+  outline: none;
+}
+
+/*# sourceMappingURL=styles.css.map */
