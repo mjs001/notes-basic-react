@@ -5,15 +5,13 @@ import Note from "./Note";
 import CreateArea from "./CreateArea";
 import axios from "axios";
 import "../sass/styles.scss";
-import prodOrLocal from "./prodOrLocal";
 
 export default function Notes() {
-  var path = prodOrLocal();
   const [notes, setNotes] = useState([]);
 
   async function addNote(note) {
     await axios
-      .post(`${path}/add`, {
+      .post("http://localhost:8000/add", {
         title: note.title,
         content: note.content,
       })
@@ -23,7 +21,7 @@ export default function Notes() {
 
   async function getTodos() {
     await axios
-      .get(`${path}/`)
+      .get("http://localhost:8000/")
       .then((res) => setNotes(res.data))
       .catch((err) => console.error("ERROR", err));
   }
@@ -43,7 +41,7 @@ export default function Notes() {
       content: note.content,
     });
     await axios
-      .put(`${path}/edit/${note.id}`, {
+      .put(`http://localhost:8000/edit/${note.id}`, {
         id: note.id,
         title: note.title,
         content: note.content,
@@ -56,7 +54,7 @@ export default function Notes() {
 
   async function deleteNote(id) {
     await axios
-      .delete(`${path}/delete/${id}`)
+      .delete(`http://localhost:8000/delete/${id}`)
       .then((res) => console.log(res))
       .catch((err) => console.error("ERROR", err));
     return setNotes((prev) => prev.filter((insideId) => insideId.id !== id));
