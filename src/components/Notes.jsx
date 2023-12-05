@@ -5,13 +5,14 @@ import Note from "./Note";
 import CreateArea from "./CreateArea";
 import axios from "axios";
 import "../sass/styles.scss";
+// import "dotenv/config";
 
 export default function Notes() {
   const [notes, setNotes] = useState([]);
 
   async function addNote(note) {
     await axios
-      .post("http://localhost:8000/add", {
+      .post(`${process.env.REACT_APP_SERVER_URL}/add`, {
         title: note.title,
         content: note.content,
       })
@@ -21,7 +22,7 @@ export default function Notes() {
 
   async function getTodos() {
     await axios
-      .get("http://localhost:8000/")
+      .get(`${process.env.REACT_APP_SERVER_URL}`)
       .then((res) => setNotes(res.data))
       .catch((err) => console.error("ERROR", err));
   }
@@ -41,7 +42,7 @@ export default function Notes() {
       content: note.content,
     });
     await axios
-      .put(`http://localhost:8000/edit/${note.id}`, {
+      .put(`${process.env.REACT_APP_SERVER_URL}/edit/${note.id}`, {
         id: note.id,
         title: note.title,
         content: note.content,
@@ -54,7 +55,7 @@ export default function Notes() {
 
   async function deleteNote(id) {
     await axios
-      .delete(`http://localhost:8000/delete/${id}`)
+      .delete(`${process.env.REACT_APP_SERVER_URL}/delete/${id}`)
       .then((res) => console.log(res))
       .catch((err) => console.error("ERROR", err));
     return setNotes((prev) => prev.filter((insideId) => insideId.id !== id));
