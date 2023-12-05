@@ -1,4 +1,4 @@
 # notes-basic-react
-Basic notes app made with React, CSS, and JS.
+Basic notes app made with React, CSS, JS, PostgreSQL, Node, and Express
 
-WIP
+[Live](https://keepr-notes.onrender.com)
